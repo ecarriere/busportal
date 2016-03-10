@@ -4,3 +4,4 @@
 node_modules/
 app/bower_components/
 api/data/db
+api/config/env_dev.js
