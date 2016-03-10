@@ -1,0 +1,23 @@
+{
+  "name": "pap",
+  "main": "app.js",
+  "homepage": "https://github.com/ecarriere/trips",
+  "authors": [
+    "ecarriere <eduardcarriere@gmail.com>"
+  ],
+  "description": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "^1.5.0",
+    "angular": "^1.5.0",
+    "bootstrap": "^3.3.6"
+  }
+}

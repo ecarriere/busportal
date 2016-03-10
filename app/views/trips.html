@@ -1,0 +1,127 @@
+<!-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="img/sample1.jpg" alt="First slide">          
+        </div>
+        <div class="item">
+          <img src="img/sample2.jpg" alt="Second slide">
+        </div>
+        <div class="item">
+          <img src="img/sample3.jpg" alt="Third slide">
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div> -->
+    <div class="search">
+        <div class="container">
+          <div class="row">
+            
+            <div class="col-md-12">
+              <div class="form-section">
+                <div class="row">
+                    <form role="form">
+                       
+                       <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="searchlabel" for="guest">Origin</label>
+                          <select id="guest" name="guest" class="form-control" ng-model="ctrl.origin">
+                              <option value="" selected disabled>Choose your origin</option>
+                              <option value="Amsterdam">Amsterdam</option>
+                              <option value="Warschau">Warschau</option>
+                              <option value="Berlin">Berlin</option>
+                              </select>
+                              </div>
+                              </div>
+
+                        <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="searchlabel" for="guest">Destination</label>
+                          <select id="guest" name="guest" class="form-control" ng-model="ctrl.destination" >
+                              <option value=""selected disabled>Choose your destination</option>
+                              <option value="Amsterdam">Amsterdam</option>
+                              <option value="Warschau">Warschau</option>
+                              <option value="Barcelona">Barcelona</option>
+                              </select>
+                              </div>
+                              </div>
+
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="searchlabel" for="checkout">Departure Date</label>
+                          <div class="input-group">
+                            <input type="date" class="form-control" id="checkout" placeholder="date" ng-model="ctrl.date">
+
+                            <!-- <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span> -->
+                            
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="col-md-2">
+                        <div class="form-group">
+                          <label class="searchlabel" for="guest">Seats</label>
+                          <select id="guest" name="guest" class="form-control">
+                              <option value="1">1 Seats</option>
+                              <option value="2">2 Seats</option>
+                              <option value="3">3 Seats</option>
+                             
+                          </select>
+                        </div>
+                      </div>
+                      
+
+                      <button type="submit" id="searchbutton" class="btn btn-default btn-primary" ng-click="ctrl.searchFilter()">Search</button>
+                    
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!--Trip display-->
+
+
+<section class="trips">
+<div class="panel panel-default" ng-init="getTrips()">
+  <div class="panel-heading">
+    <h3 class="panel-title"><strong>Upcoming Trips</strong></h3>
+  </div>
+  <div class="panel-body">
+   	<div class="row">
+		<div ng-repeat="trip in trips| searchFilter:{origin: ctrl.origin, destination: ctrl.destination, date:ctrl.date}">
+
+			<div class="col-md-10">
+				<div class="col-md-10">
+					
+					<h3>{{trip.from}} - {{trip.to}}</h3>
+					<p><strong>Date:       </strong>{{trip.date | date:'longDate'}}</p>
+					<p><strong>Time:       </strong>{{trip.time}}</p>
+					<p><strong>Price:      </strong>{{trip.price | currency}}</p>
+					<p><strong>Seats left: </strong> {{trip.seats}}</p>
+					
+					<div col-md-3>
+					<div col-md-2>
+						<label class="seatslabel" ><strong>Seats:</strong></label>
+                          <select class="form-control" ng-model="ctrl.seatselect" >
+                              <option  ng-repeat="i in trip.seats | seatsFilter">{{i}}</option>
+
+                              </select>
+					</div>
+					<divcol-md-1>
+					<button class="btn btn-primary" ng-click="booking(trip, ctrl.seatselect)">Book</button>
+					</div>
+					</div>
+					<hr>
+				</div>
+
+			</div>
+   	</div>
+  </div>
+</div>
+</section>
+
