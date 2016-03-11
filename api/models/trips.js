@@ -72,11 +72,6 @@ module.exports.updateTrip = function(id, trip, options, callback){
 	Trip.findOneAndUpdate(query, update, options, callback);
 };
 
-// Reload Page
-// module.exports.reloadRoute = function(){
-// 	$route.reload();
-// };
-
 // Delete Trip
 module.exports.removeTrip = function(id, callback){
 	var query = {_id: id};

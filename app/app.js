@@ -28,6 +28,18 @@ var myApp = angular
 		controller: 'LoginController as ctrl',
 		templateUrl: 'views/userlogin.html'
 	})
+	.when('/signup', {
+		controller: 'UsersController as ctrl',
+		templateUrl: 'views/signup.html'
+	})
+	.when('/users/edit/:id', {
+		controller:'UsersController as ctrl',
+		templateUrl: 'views/editUser.html'
+	})
+	.when('/admin', {
+		controller:'LoginController as ctrl',
+		templateUrl: 'views/login_admin.html'
+	})
 	.otherwise({
 		redirectTo: '/'
 	})
