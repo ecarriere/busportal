@@ -27,6 +27,7 @@
                           <label class="searchlabel" for="guest">Origin</label>
                           <select id="guest" name="guest" class="form-control" ng-model="ctrl.origin">
                               <option value="" selected disabled>Choose your origin</option>
+                              <option value="">Any</option>
                               <option value="Amsterdam">Amsterdam</option>
                               <option value="Warschau">Warschau</option>
                               <option value="Berlin">Berlin</option>
@@ -39,6 +40,7 @@
                           <label class="searchlabel" for="guest">Destination</label>
                           <select id="guest" name="guest" class="form-control" ng-model="ctrl.destination" >
                               <option value=""selected disabled>Choose your destination</option>
+                              <option value="">Any</option>
                               <option value="Amsterdam">Amsterdam</option>
                               <option value="Warschau">Warschau</option>
                               <option value="Barcelona">Barcelona</option>
@@ -50,28 +52,37 @@
                         <div class="form-group">
                           <label class="searchlabel" for="checkout">Departure Date</label>
                           <div class="input-group">
-                            <input type="date" class="form-control" id="checkout" placeholder="date" ng-model="ctrl.date">
+                            <input type="date" class="form-control" id="checkout" placeholder="date" ng-model="ctrl.date" ng-change="dateChange(ctrl.date)">
+                            
+                            
 
                             <!-- <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span> -->
+
+                            <!-- ng-change="function"
+
+                            changes ctrl.date to ctrl.formatted_date
+
+                            filter against that -->
                             
                           </div>
                         </div>
                       </div>
                       
-                      <div class="col-md-2">
+                      <!-- <div class="col-md-2">
                         <div class="form-group">
                           <label class="searchlabel" for="guest">Seats</label>
-                          <select id="guest" name="guest" class="form-control">
+                          <select id="guest" name="guest" class="form-control" ng-model="ctrl.seats">
                               <option value="1">1 Seats</option>
                               <option value="2">2 Seats</option>
                               <option value="3">3 Seats</option>
                              
                           </select>
                         </div>
-                      </div>
+                      </div> -->
                       
 
-                      <button type="submit" id="searchbutton" class="btn btn-default btn-primary" ng-click="ctrl.searchFilter()">Search</button>
+                      <button type="submit" id="searchbutton" class="btn btn-default btn-primary" ng-click="reload()">Show All</button>
+                     
                     
                     </form>
                 </div>
@@ -93,7 +104,8 @@
   </div>
   <div class="panel-body">
    	<div class="row">
-		<div ng-repeat="trip in trips| searchFilter:{origin: ctrl.origin, destination: ctrl.destination, date:ctrl.date}">
+		<div ng-repeat="trip in trips| filter:{from: ctrl.origin, to:ctrl.destination, date:newdate, seats:ctrl.seats}">
+
 
 			<div class="col-md-10">
 				<div class="col-md-10">
@@ -113,10 +125,11 @@
                               </select>
 					</div>
 					<divcol-md-1>
-					<button class="btn btn-primary" ng-click="booking(trip, ctrl.seatselect)">Book</button>
+					<a href="#/cart" class="btn btn-primary" ng-click="booking(trip, ctrl.seatselect)">Book</a>
+          <hr>
 					</div>
 					</div>
-					<hr>
+					
 				</div>
 
 			</div>
@@ -125,3 +138,7 @@
 </div>
 </section>
 
+
+
+
+ 

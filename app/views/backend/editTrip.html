@@ -1,37 +1,37 @@
 <div id="wrapper">
-
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
+         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
+                    <a href="#/admin">
                         Backend Busportal
                     </a>
                 </li>
                 <li>
-                    <a href="#/admin">Dashboard</a>
+                    <a href="#/admin/orders">Orders</a>
                 </li>
                 <li>
                     <a href="#/admin/add">Add Trip</a>
                 </li>
                 <li>
+                    <a href="#/admin/trips">Trips</a>
+                </li>           
+                <li>
                     <a href="#/admin/users">Users</a>
                 </li>
                 <li>
-                    <a href="#">Finance</a>
+                    <a href="#/admin/financials">Finance</a>
                 </li>
-               
             </ul>
         </div>
 
-<div class="panel panel-default" id="formpanel">
+<div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Add Trip</h3>
+    <h3 class="panel-title">Edit Trip</h3>
   </div>
   <div class="panel-body">
    	<div class="row">
 		<div class="col-md-12">
-		<form ng-submit="addTrip()">
+		<form ng-submit="updateTrip()" ng-init="getTrip()" ng-init"removeTrip()">
 		  <div class="form-group">
 		    <label>Origin:</label>
 		    <select class="form-control" placeholder="enter origin" ng-model="trip.from" >
@@ -56,52 +56,22 @@
 		  </div>
 		  <div class="form-group">
 		    <label>Date</label>
-		    <input type="date" class="form-control" placeholder="enter departure date" ng-model="trip.date">
+		    <input type="date" class="form-control" placeholder="enter departure date" ng-model="date">
 		  </div>
-		  <div class="form-group">
-		    <label>Time</label>
+		  <label>Time</label>
 		    <input type="text" class="form-control" placeholder="enter departure time" ng-model="trip.time">
 		  </div>
 		  <div class="form-group">
 		    <label>Numbers of seats</label>
-		    <input type="number" class="form-control" placeholder="enter number of seats available" ng-model="trip.seats">
+		    <input type="number" class="form-control" placeholder="enter number of pages" ng-model="trip.seats">
 		  </div>
-		  
 
-		  <button type="submit" class="btn btn-default">Submit</button>
+		 <a href="#/admin/trips" type="submit" class="btn btn-default">Back</a>
+		 <button type="submit" class="btn btn-default" href="#/admin/trips">Update</button>
+		 <a class="btn btn-delete" ng-click="removeTrip(trip._id)" href="#/admin/trips">Delete</a>
+		 
 		</form>
 		</div>
    	</div>
   </div>
 </div>
-
-</div>
-<hr>
-<h3><strong>Trips:</strong></h3>
-<hr>
-
-<!-- Show entries-->
-
-<section ng-init="getTrips()">
-	
-	<div ng-repeat="trip in trips">
-
-			<div class="col-md-10">
-				<div class="col-md-10">
-					<h3>{{trip.from}} - {{trip.to}}</h3>
-					<p><strong>Date:       </strong>{{trip.date}}</p>
-					<p><strong>Time:       </strong>{{trip.time}}</p>
-					<p><strong>Price:      </strong>{{trip.price | currency}}</p>
-					<p><strong>Seats left: </strong> {{trip.seats}}</p>
-
-					</br>
-					
-					<a href="#/trips/edit/{{trip._id}}">Edit</a> 
-					<a class="btn btn-delete" ng-click="removeTrip(trip._id)">Delete</a>
-
-					<hr>
-				</div>
-
-			</div>
-   	</div>
-</section>

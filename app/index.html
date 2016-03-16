@@ -12,13 +12,15 @@
 	<script type="text/javascript" src="/bower_components/angular-route/angular-route.js"></script>
 	<script type="text/javascript" src="app.js"></script>
 	<script type="text/javascript" src="/controllers/trips.ctrl.js"></script>
-  <script type="text/javascript" src="/controllers/search.fltr.js"></script>
-  <script type="text/javascript" src="/controllers/seats.fltr.js"></script>
+  <script type="text/javascript" src="/controllers/filters/search.fltr.js"></script>
+  <script type="text/javascript" src="/controllers/filters/seats.fltr.js"></script>
   <script type="text/javascript" src="/controllers/services/cart.srv.js"></script>
   <script type="text/javascript" src="/controllers/cartCtrl.ctrl.js"></script>
   <script type="text/javascript" src="/controllers/LoginController.ctrl.js"></script>
-  <!-- <script type="text/javascript" src="/controllers/services/loginService.js"></script> -->
   <script type="text/javascript" src="/controllers/users.ctrl.js"></script>
+  <script type="text/javascript" src="/controllers/users.ctrl.js"></script>
+  <script type="text/javascript" src="/controllers/orders.ctrl.js"></script>
+  <!-- <script type="text/javascript" src="/controllers/services/loginService.js"></script> -->
   <!-- <script type="text/javascript" src="/app/assets/angular-ui-router.js"></script> -->
 	
 
@@ -44,9 +46,9 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class=""><a href="#/cart">Cart</a></li>
-            <li class=""><a href="#/userlogin">Login user</a></li>
-            <li class=""><a href="#/signup">Sign Up!</a></li>
-          	<li class=""><a href="#/trips/add">Admin Trips</a></li>
+            <li class=""><a href="#/userlogin">Login</a></li>
+            <li class=""><a href="#/signup">Sign Up</a></li>
+          	<li class=""><a href="#/admin">Admin Trips</a></li>
           	
           	</ul>
         </div>
@@ -79,7 +81,6 @@
 <!--
 To do
 
-//link "Book" to cart page (shop app!!)
 
 //footer and header
 
@@ -89,25 +90,16 @@ To do
 
 // Search bottom: add class: show trips otherwise hide
 
-// Date has to become just date
-
-// add time as string - given
 
 //User:
   Login/Create account
-  Database user data
   save cart
   save bookings
-
-// pricing area
 
 
 Questions::
 
 - Reload add page after submit and delete!!
-- Why doesnt the Date/Time load into Edit?
-- 
--->
 
 
 

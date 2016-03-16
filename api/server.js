@@ -14,9 +14,6 @@ catch(err){
 }
 
 
-var Trip = require('./models/trips.js')
-
-
 //Connect to mongoose
 mongoose.connect('mongodb://localhost/data/db');
 var db = mongoose.connection;
@@ -26,12 +23,23 @@ db.once('open', function(){
 	console.log("Connected to db at /api/data/db");
 });
 
-var apiRoutes = require('./routes/apiroutes.js');
-app.use('/', apiRoutes);
+
+////// Routes:
+
+// UserRoute
+var userRoutes = require('./routes/userRoute.js')
+app.use('/api/users',userRoutes)
+
+// TripRoute
+var tripRoutes = require('./routes/tripRoute.js')
+app.use('/api/trips',tripRoutes)
+
+// OrderRoute
+var orderRoutes = require('./routes/orderRoute.js')
+app.use('/api/orders', orderRoutes)
 
 
 // Listen on port..
-
 app.listen(env.port,function(){
 	console.log('Listenting on '+env.host+':'+env.port);
 	console.log('Stop server with CTRL + C');

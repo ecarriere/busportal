@@ -16,11 +16,11 @@ var tripSchema = mongoose.Schema({
 	},
 	date:{
 		type: String,
-		requiered: true
+		required: true
 	},
 	time:{
 		type: String,
-		requiered: true
+		required: true
 	},
 	seats:{
 		type: Number,
@@ -54,7 +54,7 @@ module.exports.addTrip = function(trip, callback){
 		if(err){
 			console.log(err)
 		}
-		Trip.create(trip, callback);
+		//Trip.create(trip, callback);
 	});
 };
 

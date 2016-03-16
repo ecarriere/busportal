@@ -1,0 +1,98 @@
+<!-- Container -->
+<div class="container">
+
+    <div class="checkout-wrapper">
+        <div class="checkout-price">
+                    
+        </div>
+        <div class="row">
+    
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Use your account:</h3>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                <div class="col-md-12">
+                <form ng-submit="loginUser()">
+                    
+
+                    <div class="form-group">
+                                <label>Email:</label>
+                                <input type="text" class="form-control" placeholder="enter email" ng-model="user.email" required>
+                                </div>
+
+                                <div class="form-group">
+                                <label>Password:</label>
+                                <input type="password" class="form-control" placeholder="enter password" ng-model="user.password" requiered>
+                                </div>
+                    
+                                <button type="submit" class="btn btn-default">Login</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+
+
+
+           <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Pay as Guest</h3>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                <div class="col-md-12">
+                <form ng-submit="ctrl.addOrder()">
+
+                    <h3>{{ctrl.items[0].from}}</h3> - <h3>{{ctrl.items[0].to}}</h3>
+
+                    <p><strong>Date:       </strong>{{ctrl.items[0].date | date:'longDate'}}</p>
+                    <p><strong>Time:       </strong>{{ctrl.items[0].time}}</p>
+                    <p><strong>Price:      </strong>{{ctrl.items[0].price | currency}}</p>
+                    <p><strong>Seats bought: </strong> {{ctrl.items[0].seatsbought}}</p>
+
+                    <h3>{{ctrl.total | currency}}</h3>
+                  
+                  <div class="form-group">
+                    <label>Firstname:</label>
+                    <input type="text" class="form-control" placeholder="enter firstname" ng-model="ctrl.order.firstname">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Lastname:</label>
+                    <input type="text" class="form-control" placeholder="enter lastname" ng-model="ctrl.order.lastname">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Email:</label>
+                    <input type="text" class="form-control" placeholder="enter email" ng-model="ctrl.order.email">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Phone number:</label>
+                    <input type="text" class="form-control" placeholder="enter password" ng-model="ctrl.order.phone">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Country:</label>
+                    <select class="form-control" placeholder="select country of residence" ng-model="ctrl.order.country" >
+                      <option value="" selected disabled>Please select city</option>
+                      <option value="The Netherlands" selected>The Netherlands</option>
+                      <option value="Poland">Poland</option>
+                      
+                    </select>
+                  </div>
+                  
+                 
+
+                  <button type="submit" class="btn btn-default">Pay</button>
+                </form>
+                </div>
+                </div>
+              </div>
+            </div>
+
+            </div>
+
+</div>

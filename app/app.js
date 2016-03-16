@@ -6,39 +6,63 @@ var myApp = angular
 
 	.when('/', {
 		controller: 'TripsController as ctrl',
-		templateUrl: '/views/trips.html'
+		templateUrl: '/views/frontend/trips.html'
 	})
-	.when('/trips/add', {
-		controller:'TripsController as ctrl',
-		templateUrl: 'views/addTrip.html'
-	})
-	.when('/trips/edit/:id', {
-		controller:'TripsController as ctrl',
-		templateUrl: 'views/editTrip.html'
-	})
+
 	.when('/cart', {
 		controller:'CartController as ctrl',
-		templateUrl: 'views/cart.html'
+		templateUrl: 'views/frontend/cart.html'
 	})
 	.when('/checkout', {
 		controller:'CartController as ctrl',
-		templateUrl: 'views/checkout.html'
+		templateUrl: 'views/frontend/checkout.html'
 	})
 	.when('/userlogin', {
 		controller: 'LoginController as ctrl',
-		templateUrl: 'views/userlogin.html'
+		templateUrl: 'views/frontend/userlogin.html'
 	})
 	.when('/signup', {
 		controller: 'UsersController as ctrl',
-		templateUrl: 'views/signup.html'
+		templateUrl: 'views/frontend/signup.html'
+	})
+
+	// Backoffice::
+
+	.when('/admin', {
+		controller:'LoginController as ctrl',
+		templateUrl: 'views/backend/dashboard.html'
+	})
+	.when('/admin/trips', {
+		controller:'TripsController as ctrl',
+		templateUrl: 'views/backend/trips.backend.html'
+	})
+	.when('/admin/orders', {
+		controller:'OrdersController as ctrl',
+		templateUrl: 'views/backend/orders.html'
+	})
+	.when('/admin/orders/edit/:id', {
+		controller:'OrdersController as ctrl',
+		templateUrl: 'views/backend/editOrder.html'
+	})
+	.when('/admin/trips/add', {
+		controller:'TripsController as ctrl',
+		templateUrl: 'views/backend/addTrip.html'
+	})
+	.when('/admin/trips/edit/:id', {
+		controller:'TripsController as ctrl',
+		templateUrl: 'views/backend/editTrip.html'
+	})
+	.when('/admin/users', {
+		controller:'UsersController as ctrl',
+		templateUrl: 'views/backend/users.html'
 	})
 	.when('/users/edit/:id', {
 		controller:'UsersController as ctrl',
-		templateUrl: 'views/editUser.html'
+		templateUrl: 'views/backend/editUser.html'
 	})
-	.when('/admin', {
-		controller:'LoginController as ctrl',
-		templateUrl: 'views/login_admin.html'
+	.when('/admin/financials', {
+		controller:'UsersController as ctrl',
+		templateUrl: 'views/backend/financials.html'
 	})
 	.otherwise({
 		redirectTo: '/'

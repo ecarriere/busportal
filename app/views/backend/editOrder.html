@@ -1,0 +1,74 @@
+<div id="wrapper">
+         <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#/admin">
+                        Backend Busportal
+                    </a>
+                </li>
+                <li>
+                    <a href="#/admin/orders">Orders</a>
+                </li>
+                <li>
+                    <a href="#/admin/add">Add Trip</a>
+                </li>
+                <li>
+                    <a href="#/admin/trips">Trips</a>
+                </li>           
+                <li>
+                    <a href="#/admin/users">Users</a>
+                </li>
+                <li>
+                    <a href="#/admin/financials">Finance</a>
+                </li>
+            </ul>
+        </div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Edit Order</h3>
+  </div>
+  <div class="panel-body">
+   	<div class="row">
+		<div class="col-md-12">
+		<form ng-submit="updateOrder()" ng-init="getOrder()" ng-init"removeOrder()">
+		  <div class="form-group">
+		
+                    <label>Firstname:</label>
+                    <input type="text" class="form-control" placeholder="enter firstname" ng-model="order.firstname">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Lastname:</label>
+                    <input type="text" class="form-control" placeholder="enter lastname" ng-model="order.lastname">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Email:</label>
+                    <input type="text" class="form-control" placeholder="enter email" ng-model="order.email">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Phone number:</label>
+                    <input type="text" class="form-control" placeholder="enter password" ng-model="order.phone">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Country:</label>
+                    <select class="form-control" placeholder="select country of residence" ng-model="order.country" >
+                      <option value="" selected disabled>Please select city</option>
+                      <option value="The Netherlands" selected>The Netherlands</option>
+                      <option value="Poland">Poland</option>
+                      
+                    </select>
+                  </div>
+
+		 <a href="#/admin/orders" type="submit" class="btn btn-default">Back</a>
+		 <button type="submit" class="btn btn-default" href="#/admin/orders">Update</button>
+		 <a class="btn btn-delete" ng-click="removeOrder(order._id)" href="#/admin/orders">Delete</a>
+		 
+		</form>
+		</div>
+   	</div>
+  </div>
+</div>

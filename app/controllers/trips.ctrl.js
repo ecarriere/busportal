@@ -1,16 +1,25 @@
-myApp.controller('TripsController', ['$scope', '$http', '$location', '$routeParams', 'cartService', function($scope, $http, $location, $routeParams, cartService){
+myApp.controller('TripsController', ['$scope', '$http', '$location', '$routeParams', 'cartService', '$filter', '$route', function($scope, $http, $location, $routeParams, cartService, $filter, $route){
 	
 	var ctrl = $scope;
 	ctrl.origin;
 	ctrl.destination;
 	ctrl.date;
+
 	cartService;
 
 
 	$scope.getTrips = function(){
 		$http.get('/api/trips')
 		.success(function(response){
+				
 				$scope.trips = response;
+
+				for(var i=0;i<$scope.trips.length;i++){
+					var datestamp = $scope.trips[i].date;
+					$scope.trips[i].date = datestamp.substr(0,10);
+				}
+
+				
 
 		});
 	}
@@ -28,10 +37,10 @@ myApp.controller('TripsController', ['$scope', '$http', '$location', '$routePara
 	}
 
 	$scope.addTrip = function(){
-		
+		console.log($scope.trip);
 		$http.post('/api/trips/', $scope.trip)
 		.success(function(response){
-				window.location.href='#/trips/add';
+				window.location.href='#/admin/trips';
 		});
 	}
 
@@ -39,14 +48,14 @@ myApp.controller('TripsController', ['$scope', '$http', '$location', '$routePara
 		var id = $routeParams.id;
 		$http.put('/api/trips/'+id, $scope.trip)
 		.success(function(response){
-				window.location.href='#/trips';
+				window.location.href='#/admin/trips';
 		});
 	}
 
 	$scope.removeTrip = function(id){
 		$http.delete('/api/trips/'+id)
 		.success(function(response){
-				window.location.href='#/trips';
+				window.location.href='#/admin/trips';
 		});
 	}
 
@@ -57,10 +66,19 @@ myApp.controller('TripsController', ['$scope', '$http', '$location', '$routePara
 		delete trip.$$hashKey;
 		var __trip = angular.copy(trip);
 		__trip.seatsbought = seatNum;
-		//a.push(trip);
+		
 		cartService.cartitems.push(__trip);
 		console.log(cartService.cartitems)
 	}
 
+	$scope.dateChange = function(date){
+		var mydate = $filter('date')(date, 'yyyy-MM-dd HH:mm:ss Z');
+		$scope.newdate = (mydate.substr(0,10)).toString();
+		
+	}
+
+	$scope.reload = function($route){
+		$scope.$route.reload();
+	}
 
 }]);

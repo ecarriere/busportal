@@ -62,33 +62,15 @@
 </div>
 
 </div>
-<hr>
-<h3><strong>Users:</strong></h3>
-<hr>
 
-<!-- Show entries-->
-
-<section ng-init="getUsers()">
+<!-- <div class="login">
+  <div class="login-triangle"></div>
   
-  <div ng-repeat="user in users">
+  <h2 class="login-header">Log in</h2>
 
-      <div class="col-md-10">
-        <div class="col-md-10">
-          <h3>{{user.firstname}} {{user.lastname}}</h3>
-          <p><strong>Username: </strong>{{user.username}}</p>
-          <p><strong>Password:       </strong>{{user.password}}</p>
-          <p><strong>Phone number:      </strong>{{user.phone}}</p>
-          <p><strong>Email: </strong> {{user.email}}</p>
-          <p><strong>Country: </strong> {{user.country}}</p>
-
-          </br>
-          
-          <a href="#/users/edit/{{user._id}}">Edit</a> 
-          <a class="btn btn-delete" ng-click="removeUser(user._id)">Delete</a>
-
-          <hr>
-        </div>
-
-      </div>
-    </div>
-</section>
+  <form class="login-container">
+    <p><input type="email" placeholder="Email" ng-model="ctrl.username"></p>
+    <p><input type="password" placeholder="Password" ng-model="ctrl.password"></p>
+    <p><input type="submit" value="Log in" ng-click="ctrl.login()"></p>
+  </form>
+</div> -->

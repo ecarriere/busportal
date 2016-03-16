@@ -1,0 +1,67 @@
+<!-- Backdrop -->
+<!-- <div class="Modal-backdrop"></div>
+<div class="Modal-holder" autoscroll="false">
+    <div ui-view>
+    </div>
+ -->
+    <div class="row">
+        <div class="cart-wrapper">
+            <div class="cart-frame">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table class="table table-hover cart-table">
+                            <thead>
+                                <tr>
+                                    <th>From:</th>
+                                    <th>To:</th>
+                                    <th>Date:</th>
+                                    <th>Seats:</th>
+                                    <th>Price ($)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in ctrl.items">
+                                    <td>{{item.from}}</td>
+                                    <td>{{item.to}}</td>
+                                    <td>{{item.date | date: 'mediumDate'}}</td>
+                                    <td>{{item.seatsbought}}</td>
+                                    <td>{{item.price | currency}}</td>
+                                    
+                                    <td class="remove">
+                                        <button class="btn-remove" ng-click="ctrl.removeItem($index)">X</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- /Row -->
+                <div class="row m-top30">
+                    <div class="col-sm-7 cost-calc">
+
+                        <div class="col-sm-3 subtotal-cost">
+                            <p><strong>Subtotal:</strong> {{ctrl.subtotal | currency}}</p>
+                        </div>
+                        <div class="col-sm-3 taxes-cost">
+                            <p><strong>Taxes:</strong> {{ctrl.taxes | currency}}</p>
+                        </div>
+                        
+                        <div class="col-sm-3 total-cost" class="cart-total">
+                            <p><strong>Total:</strong> {{ctrl.total | currency}}</p>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-5">
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="pull-right">
+                        <a href="#/" class="btn btn-primary btn-continue">Continue Searching</a>
+                        <a href="/#/checkout/" type="submit" class="btn btn-primary btn-checkout">Checkout</a>
+                        </div>
+        </div>
+        <!-- /Cart Wrapper -->
+    </div>
+    <!-- /Row -->
+</div>

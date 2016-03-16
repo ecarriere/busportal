@@ -5,7 +5,7 @@ var userSchema = mongoose.Schema({
 	
 	username:{
 		type: String,
-		requiered: true
+		required: true
 	},
 	password:{
 		type: String,
@@ -33,7 +33,7 @@ var userSchema = mongoose.Schema({
     },
 	country:{
 		type: String,
-		default: Date.now
+		required: true
 	},
 	create_date:{
 		type: Date,

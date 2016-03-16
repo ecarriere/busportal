@@ -1,0 +1,69 @@
+<div id="wrapper">
+         <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#/admin">
+                        Backend Busportal
+                    </a>
+                </li>
+                <li>
+                    <a href="#/admin/orders">Orders</a>
+                </li>
+                <li>
+                    <a href="#/admin/trips/add">Add Trip</a>
+                </li>
+                <li>
+                    <a href="#/admin/trips">Trips</a>
+                </li>           
+                <li>
+                    <a href="#/admin/users">Users</a>
+                </li>
+                <li>
+                    <a href="#/admin/financials">Finance</a>
+                </li>
+            </ul>
+        </div>
+
+<div class="panel panel-default" id="formpanel">
+  <div class="panel-heading">
+    <h3 class="panel-title">Users</h3>
+  </div>
+  <div class="panel-body">
+       <div class="form-group">
+              <label>Search:</label>
+              <input type="text" class="form-control" placeholder="enter searchterm" ng-model="users.search">
+            </div>
+  </div>
+  </div>
+
+
+<hr>
+<h3><strong>Users:</strong></h3>
+<hr>
+
+<!-- Show entries-->
+
+<section ng-init="getUsers()">
+  
+  <div ng-repeat="user in users">
+
+      <div class="col-md-10">
+        <div class="col-md-10">
+          <h3>{{user.firstname}} {{user.lastname}}</h3>
+          <p><strong>Username: </strong>{{user.username}}</p>
+          <p><strong>Password:       </strong>{{user.password}}</p>
+          <p><strong>Phone number:      </strong>{{user.phone}}</p>
+          <p><strong>Email: </strong> {{user.email}}</p>
+          <p><strong>Country: </strong> {{user.country}}</p>
+
+          </br>
+          
+          <a href="#/users/edit/{{user._id}}">Edit</a> 
+          <a class="btn btn-delete" ng-click="removeUser(user._id)">Delete</a>
+
+          <hr>
+        </div>
+
+      </div>
+    </div>
+</section>
