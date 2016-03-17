@@ -25,7 +25,7 @@
                        <div class="col-md-3">
                         <div class="form-group">
                           <label class="searchlabel" for="guest">Origin</label>
-                          <select id="guest" name="guest" class="form-control" ng-model="ctrl.origin">
+                          <select id="guest" name="guest" class="form-control" ng-model="origin">
                               <option value="" selected disabled>Choose your origin</option>
                               <option value="">Any</option>
                               <option value="Amsterdam">Amsterdam</option>
@@ -38,7 +38,7 @@
                         <div class="col-md-3">
                         <div class="form-group">
                           <label class="searchlabel" for="guest">Destination</label>
-                          <select id="guest" name="guest" class="form-control" ng-model="ctrl.destination" >
+                          <select id="guest" name="guest" class="form-control" ng-model="destination" >
                               <option value=""selected disabled>Choose your destination</option>
                               <option value="">Any</option>
                               <option value="Amsterdam">Amsterdam</option>
@@ -81,7 +81,7 @@
                       </div> -->
                       
 
-                      <button type="submit" id="searchbutton" class="btn btn-default btn-primary" ng-click="reload()">Show All</button>
+                      <button type="submit" id="searchbutton" class="btn btn-default btn-primary" ng-click="clearFilter()">Show All</button>
                      
                     
                     </form>
@@ -94,46 +94,56 @@
 
 
 
-      <!--Trip display-->
 
-
-<section class="trips">
-<div class="panel panel-default" ng-init="getTrips()">
-  <div class="panel-heading">
-    <h3 class="panel-title"><strong>Upcoming Trips</strong></h3>
+<section class="trips" ng-init="getTrips()">
+<div class="panel panel-default" ng-repeat="trip in trips | orderBy:orderByDate| filter:{from: origin, to:destination, date:newdate}" >
+  <div class="panel-heading" >
   </div>
-  <div class="panel-body">
-   	<div class="row">
-		<div ng-repeat="trip in trips| filter:{from: ctrl.origin, to:ctrl.destination, date:newdate, seats:ctrl.seats}">
+  <div class="panel-body" >
+         	<div class="row">
+              <div class="col-md-10">
+
+      		    <h3>{{trip.from}} - {{trip.to}}</h3>        
+          </div>  
+          </div>
+          <div class="row">
+              <div class="col-md-4 pull-left">
+              <p><strong>Date:       </strong>{{trip.date | date:'longDate'}}</p>
+              <p><strong>Time:       </strong>{{trip.time}}</p>
+                <p><strong>Price:      </strong>{{trip.price | currency}}</p>
+
+          </div>
+              <div class"row">
+      			   <div class="col-md-4">
+      					<p><strong>Seats left: </strong> {{trip.seats}}</p>
+              </div>
+              <div class="col-md-4">
+      					
+      						<label class="seatslabel" ><strong>Seats:</strong></label>
+                          
+                                <select class="btn btn-default dropdown-toggle" class="form-control" ng-model="ctrl.seatselect" >
+                                    <option  ng-repeat="i in trip.seats | seatsFilter" >{{i}}</option>
+                                    </select>
+                                    <a href="#/checkout" class="btn btn-primary pull-right" ng-click="booking(trip, ctrl.seatselect)">Book</a>
+      					           
+              </div>
+              <div class="row">
+              <div class="col-md-4"
+      					 <div col-md-10>
+      					
+              </div>
+              </div>
+              </div>
+              </div>
 
 
-			<div class="col-md-10">
-				<div class="col-md-10">
-					
-					<h3>{{trip.from}} - {{trip.to}}</h3>
-					<p><strong>Date:       </strong>{{trip.date | date:'longDate'}}</p>
-					<p><strong>Time:       </strong>{{trip.time}}</p>
-					<p><strong>Price:      </strong>{{trip.price | currency}}</p>
-					<p><strong>Seats left: </strong> {{trip.seats}}</p>
-					
-					<div col-md-3>
-					<div col-md-2>
-						<label class="seatslabel" ><strong>Seats:</strong></label>
-                          <select class="form-control" ng-model="ctrl.seatselect" >
-                              <option  ng-repeat="i in trip.seats | seatsFilter">{{i}}</option>
+      					</div>
+      					</div>
+      					
+      				
 
-                              </select>
-					</div>
-					<divcol-md-1>
-					<a href="#/cart" class="btn btn-primary" ng-click="booking(trip, ctrl.seatselect)">Book</a>
-          <hr>
-					</div>
-					</div>
-					
-				</div>
-
-			</div>
-   	</div>
+      			</div>
+         	</div>
   </div>
 </div>
 </section>

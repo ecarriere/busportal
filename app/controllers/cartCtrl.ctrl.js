@@ -7,7 +7,7 @@ myApp.controller('CartController', CartController);
 	
 
 
-function CartController(cartService, $http){
+function CartController(cartService, $http, $location){
 	var cartVm = this;
 	cartVm.items = cartService.cartitems;
 	cartVm.removeItem = removeItem;
@@ -50,8 +50,9 @@ function CartController(cartService, $http){
 		console.log(cartVm.order);
 
 		$http.post('/api/orders/', cartVm.order)
-		.success(function(response){
-				window.location.href='#/api/orders';
+		.then(function(response){
+			console.log(response);
+			$location.path('/thankyou');
 		});
 	}
 

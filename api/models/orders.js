@@ -65,7 +65,6 @@ module.exports.addOrder = function(order, callback){
 		if(err){
 			console.log(err)
 		}
-		
 	});
 };
 

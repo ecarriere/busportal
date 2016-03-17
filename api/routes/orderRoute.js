@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Order = require('./../models/orders.js');
+var Trip = require('./../models/trips.js');
 var bodyParser = require('body-parser');
 
 // Routes Orders
@@ -24,18 +25,30 @@ router.get('/:_id', function(req, res){
 	});
 
 router.post('/', function(req, res){
-
 	var order = req.body;
-	console.log(req);
-	order.order = JSON.stringify(order.order);
-	console.log('order: ' + order);
-	Order.addOrder(order, function(err, order){
-		if(err){
-			throw err;
-		}
+	console.log(order);
+	var parsedOrder = order.order;
+	
 
-		res.json(order);
-	});
+	var tripId  = parsedOrder._id;
+
+	var orderedTrip;
+	Trip.findById(tripId, function(err, trip){
+		orderedTrip = trip;
+		orderedTrip.seats = orderedTrip.seats - parsedOrder.seatsbought;
+		console.log('trip find by id: ' + orderedTrip.seats);
+		Trip.findOneAndUpdate({_id: tripId}, orderedTrip, {}, function(err) {
+			console.log('find one and update: ' + order.order);
+			order.order = JSON.stringify(order.order);
+			Order.create(order, function(err, order){
+				if(err){
+					throw err;
+				}
+
+				res.json(order);
+			});
+		});
+	})
 });
 
 router.put('/:_id', function(req, res){

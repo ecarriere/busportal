@@ -1,10 +1,12 @@
 var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
+//var authentication = require("./middleware/auth");
 var bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 app.use(express.static(__dirname +'./../app'));
+//app.use(bodyParser.urlencoded({extended:false}));
 
 try{
 	var env = require('./config/env_dev');
@@ -37,6 +39,10 @@ app.use('/api/trips',tripRoutes)
 // OrderRoute
 var orderRoutes = require('./routes/orderRoute.js')
 app.use('/api/orders', orderRoutes)
+
+// AuthRoute
+//var authRoutes = require('./routes/authRoute.js');
+//app.use('/api/auth', authRoutes);
 
 
 // Listen on port..

@@ -1,4 +1,4 @@
-<div class="login">
+<!-- <div class="login">
   <div class="login-triangle"></div>
   
   <h2 class="login-header">Log in</h2>
@@ -8,4 +8,35 @@
     <p><input type="password" placeholder="Password" ng-model="ctrl.password"></p>
     <p><input type="submit" value="Log in" ng-click="ctrl.login()"></p>
   </form>
-</div>
+</div> -->
+
+<section id="auth">
+  <div class="login-page">
+    <div id="main-content" class="auth main-content" ng-submit="authVm.authenticate()">
+      <div class="banner-wrapper registration-header">
+        <h3>Log In</h3>
+      </div>
+      <div class="container-fluid">
+        <div class="login-wrapper">
+          <div class="login-form clearfix">
+            <form method="post" class="stacked-form">
+              <div class="row">
+                <div class="col-xs-12">
+                  <span class="field-validation-valid" data-valmsg-for="EmailAddress" data-valmsg-replace="true"></span>
+                  <input class="form-input bs-input-box stacked-input-box" type="text" name="EmailAddress" value="" placeholder="Email Address" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="authVm.email" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                  <input class="form-input bs-input-box stacked-input-box" type="password" name="Password" placeholder="Password" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="authVm.password" />
+                </div>
+              </div>
+              <input type="submit" value="{{authVm.auth_btn}}" class="form-input btn btn-primary bs-form__button btn-lg stacked-input-box"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

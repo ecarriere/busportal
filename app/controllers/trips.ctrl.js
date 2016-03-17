@@ -66,7 +66,7 @@ myApp.controller('TripsController', ['$scope', '$http', '$location', '$routePara
 		delete trip.$$hashKey;
 		var __trip = angular.copy(trip);
 		__trip.seatsbought = seatNum;
-		
+		cartService.cartitems = [];
 		cartService.cartitems.push(__trip);
 		console.log(cartService.cartitems)
 	}
@@ -77,8 +77,36 @@ myApp.controller('TripsController', ['$scope', '$http', '$location', '$routePara
 		
 	}
 
-	$scope.reload = function($route){
-		$scope.$route.reload();
-	}
+	$scope.orderByDate = function(item) {
+	    var parts = item.date.split('-');
+	    var date = new Date(parseInt(parts[2]), 
+	                        parseInt(parts[1]), 
+	                        parseInt(parts[0]));
+
+	    return date;
+	};
+
+	$scope.clearFilter = function(){
+		$scope.origin = undefined;
+		$scope.destination = undefined;
+		$scope.newdate = undefined;
+
+
+
+	};
+
+
+
+
 
 }]);
+
+
+
+
+
+
+
+
+
+
