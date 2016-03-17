@@ -1,6 +1,42 @@
 /*.panel-heading {
   background-color: blue;
 }*/
+.cart-wrapper{
+  background-color: #F0F0F0 
+}
+
+.navbar {
+  background: none;
+  border: none;
+}
+
+.menu-item, .navbar-brand {
+  border: 1px solid white;
+  
+}
+
+.menu-item > a {
+
+  color: white;
+  left: 5px;
+  border-spacing: 5px;
+  
+ 
+}
+
+.panel {
+  width: 60%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #F0F0F0 
+  
+}
+
+.trips {
+  opacity: 0.85;
+  z-index: 1000;
+}
 
 .seatsoption {
   width: 100px;
@@ -16,13 +52,14 @@
 .search {
 	margin-top: -25%;
 
+
 }
 .search .form-section{
 	background:rgba(0,0,0,1);
 	border: 2px solid #414141;
 	border-radius: 5px;
 	padding: 10px;
-  /*opacity: 0.5;*/
+  opacity: 0.8;
 }
 
 #searchbutton{

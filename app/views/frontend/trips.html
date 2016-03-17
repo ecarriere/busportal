@@ -13,6 +13,7 @@
       <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
       <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
     </div> -->
+
     <div class="search">
         <div class="container">
           <div class="row">
@@ -95,29 +96,30 @@
 
 
 
-<section class="trips" ng-init="getTrips()">
-<div class="panel panel-default" ng-repeat="trip in trips | orderBy:orderByDate| filter:{from: origin, to:destination, date:newdate}" >
+<section class="trips">
+<div class="panel panel-default" ng-repeat="trip in cur_trips | orderBy:orderByDate| filter:{from: origin, to:destination, date:newdate}" >
   <div class="panel-heading" >
+  <h3><strong>{{trip.from}} - {{trip.to}}</strong></h3>
   </div>
   <div class="panel-body" >
          	<div class="row">
-              <div class="col-md-10">
+              <div class="col-md-6">
 
-      		    <h3>{{trip.from}} - {{trip.to}}</h3>        
+      		            
           </div>  
           </div>
           <div class="row">
-              <div class="col-md-4 pull-left">
+              <div class="col-md-3 pull-left">
               <p><strong>Date:       </strong>{{trip.date | date:'longDate'}}</p>
               <p><strong>Time:       </strong>{{trip.time}}</p>
                 <p><strong>Price:      </strong>{{trip.price | currency}}</p>
 
           </div>
               <div class"row">
-      			   <div class="col-md-4">
+      			   <div class="col-md-3">
       					<p><strong>Seats left: </strong> {{trip.seats}}</p>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-3">
       					
       						<label class="seatslabel" ><strong>Seats:</strong></label>
                           
@@ -127,12 +129,7 @@
                                     <a href="#/checkout" class="btn btn-primary pull-right" ng-click="booking(trip, ctrl.seatselect)">Book</a>
       					           
               </div>
-              <div class="row">
-              <div class="col-md-4"
-      					 <div col-md-10>
-      					
-              </div>
-              </div>
+             
               </div>
               </div>
 

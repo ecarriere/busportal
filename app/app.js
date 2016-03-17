@@ -112,4 +112,4 @@ var myApp = angular
 
 });
 
-// , 'angular-jwt'
+// , 'angular-jwt' (put up there)!!!

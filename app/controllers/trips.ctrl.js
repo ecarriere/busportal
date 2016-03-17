@@ -8,16 +8,25 @@ myApp.controller('TripsController', ['$scope', '$http', '$location', '$routePara
 	cartService;
 
 
+
 	$scope.getTrips = function(){
 		$http.get('/api/trips')
 		.success(function(response){
-				
+				var cur_date = $scope.getCurrentDate();
 				$scope.trips = response;
+				$scope.cur_trips = [];
+				console.log($scope.trips);
 
 				for(var i=0;i<$scope.trips.length;i++){
 					var datestamp = $scope.trips[i].date;
 					$scope.trips[i].date = datestamp.substr(0,10);
+					if($scope.trips[i].date >= cur_date){
+						$scope.cur_trips.push($scope.trips[i]);
+					}
 				}
+				
+				console.log($scope.trips);
+				console.log($scope.cur_trips);
 
 				
 
@@ -74,6 +83,7 @@ myApp.controller('TripsController', ['$scope', '$http', '$location', '$routePara
 	$scope.dateChange = function(date){
 		var mydate = $filter('date')(date, 'yyyy-MM-dd HH:mm:ss Z');
 		$scope.newdate = (mydate.substr(0,10)).toString();
+		console.log($scope.newdate);
 		
 	}
 
@@ -94,6 +104,27 @@ myApp.controller('TripsController', ['$scope', '$http', '$location', '$routePara
 
 
 	};
+
+
+	$scope.getCurrentDate = function(){
+		var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth()+1; //January is 0!
+		var yyyy = today.getFullYear();
+
+		if(dd<10) {
+		    dd='0'+dd;
+		} 
+
+		if(mm<10) {
+		    mm='0'+mm
+		} 
+
+		return yyyy+'-'+mm+'-'+dd;
+		
+	}
+	
+	$scope.getTrips();
 
 
 

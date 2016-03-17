@@ -23,13 +23,13 @@
                 </li>
             </ul>
         </div>
-
+    </div>
 
 <div class="panel panel-default" id="formpanel">
   <div class="panel-heading">
     <h3 class="panel-title">Trips</h3>
   </div>
-  <div class="panel-body">
+<div class="panel-body">
        <div class="form-group">
               <label>Search:</label>
               <input type="text" class="form-control" placeholder="enter searchterm" ng-model="users.search">
@@ -37,27 +37,39 @@
   </div>
   </div>
 
-<section ng-init="getTrips()">
-    
-    <div ng-repeat="trip in trips">
 
-            <div class="col-md-10">
-                <div class="col-md-10">
-                    <h3>{{trip.from}} - {{trip.to}}</h3>
-                    <p><strong>Date:       </strong>{{trip.date | date:'longDate'}}</p>
-                    <p><strong>Time:       </strong>{{trip.time}}</p>
-                    <p><strong>Price:      </strong>{{trip.price | currency}}</p>
-                    <p><strong>Seats left: </strong> {{trip.seats}}</p>
 
-                    </br>
-                    
-                    <a href="#/admin/trips/edit/{{trip._id}}">Edit</a> 
+<section class="trips" ng-init="getTrips()">
+<div class="panel panel-default" ng-repeat="trip in trips" >
+  <div class="panel-heading" >
+  </div>
+  <div class="panel-body" >
+
+            
+            <div class="row">
+              <div class="col-md-10">
+
+                <h3>{{trip.from}} - {{trip.to}}</h3>        
+          </div>  
+          </div>
+          <div class="row">
+              <div class="col-md-4 pull-left">
+              <p><strong>Date:       </strong>{{trip.date | date:'longDate'}}</p>
+              <p><strong>Time:       </strong>{{trip.time}}</p>
+                <p><strong>Price:      </strong>{{trip.price | currency}}</p>
+
+          </div>
+              <div class"row">
+                   <div class="col-md-4">
+                        <p><strong>Seats left: </strong> {{trip.seats}}</p>
+                        <a href="#/admin/trips/edit/{{trip._id}}">Edit</a> 
                     <a class="btn btn-delete" ng-click="removeTrip(trip._id)">Delete</a>
-
-                    <hr>
+              </div>
+             
                 </div>
-
             </div>
+            </div>
+
     </div>
 </section>
 </div>
