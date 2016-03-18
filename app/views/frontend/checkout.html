@@ -1,9 +1,10 @@
 <!-- Container -->
+ <section class="trips">
  <div class="row">
         <div class="cart-wrapper">
             <div class="cart-frame">
                 <div class="row">
-                    <div class="col-sm-8">
+                    <div class="col-md-8">
                         <table class="table table-hover cart-table" >
                             <thead>
                                 <tr>
@@ -22,9 +23,7 @@
                                     <td>{{item.seatsbought}}</td>
                                     <td>{{item.price | currency}}</td>
                                     
-                                    <td class="remove">
-                                        <button class="btn-remove" ng-click="ctrl.removeItem($index)">X</button>
-                                    </td>
+                                    
                                 </tr>
                             </tbody>
                         </table>
@@ -33,23 +32,23 @@
                 <!-- /Row -->
     
             <div class="row m-top30">
-                    <div class="col-sm-8 cost-calc">
+                    <div class="col-md-8 cost-calc">
                         <div class="col-sm-3 subtotal-cost">
                             <p><strong>Subtotal:</strong> {{ctrl.subtotal | currency}}</p>
                         </div>
-                        <div class="col-sm-3 taxes-cost">
+                        <div class="col-md-3 taxes-cost">
                             <p><strong>Taxes:</strong> {{ctrl.taxes | currency}}</p>
                         </div>
                         
-                        <div class="col-sm-3 total-cost" class="cart-total">
+                        <div class="col-md-3 total-cost" class="cart-total">
                             <p><strong>Total:</strong> {{ctrl.total | currency}}</p>
                         
                         </div>
 
-                        <a href="#/" class="btn btn-primary btn-continue">Continue Searching</a>
-                        <a href="/#/checkout/" type="submit" class="btn btn-primary btn-checkout">Checkout</a>
-                        </div>
-                    <div class="col-sm-4 pull-right">
+                        <a href="#/" class="btn btn-primary btn-continue" ng-click="ctrl.removeItem($index)">Cancel Booking</a>
+                        <!-- <a href="#/login" class="btn btn-primary btn-continue">Login</a> -->
+                       
+     <!--                <div class="col-sm-4 pull-right">
                     <div class="container">
 
     <div class="checkout-wrapper">
@@ -83,7 +82,7 @@
                 </form>
             </div>
             </div>
-        </div>
+        </div> -->
                        
                     </div>
                 </div>
@@ -94,32 +93,33 @@
     </div>
     <!-- /Row -->
 </div>
+</section>
 
 
 
-
-
+<section class="trips">
            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Pay as Guest</h3>
-              </div>
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Pay as Guest</h3>
+                  </div>
               <div class="panel-body">
                 <div class="row">
                 <div class="col-md-12">
                 <form>
                   <div class="form-group">
                     <label>Firstname:</label>
-                    <input type="text" class="form-control" placeholder="enter firstname" ng-model="ctrl.order.firstname">
+                    <input type="text" class="form-control" placeholder="enter firstname" ng-model="ctrl.order.firstname" >
+
                   </div>
 
                   <div class="form-group">
                     <label>Lastname:</label>
-                    <input type="text" class="form-control" placeholder="enter lastname" ng-model="ctrl.order.lastname">
+                    <input type="text" class="form-control" placeholder="enter lastname" ng-model="ctrl.order.lastname" >
                   </div>
 
                   <div class="form-group">
                     <label>Email:</label>
-                    <input type="text" class="form-control" placeholder="enter email" ng-model="ctrl.order.email">
+                    <input type="text" class="form-control" placeholder="enter email" ng-model="ctrl.order.email" >
                   </div>
 
                   <div class="form-group">
@@ -129,8 +129,8 @@
 
                   <div class="form-group">
                     <label>Country:</label>
-                    <select class="form-control" placeholder="select country of residence" ng-model="ctrl.order.country" >
-                      <option value="" selected disabled>Please select city</option>
+                    <select class="form-control" placeholder="select country of residence" ng-model="ctrl.order.country">
+                      <option value="" selected disabled>Please select country:</option>
                       <option value="The Netherlands" selected>The Netherlands</option>
                       <option value="Poland">Poland</option>
                       
@@ -149,3 +149,4 @@
             </div>
 
 </div>
+</section>

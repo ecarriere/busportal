@@ -1,6 +1,14 @@
 myApp.controller('UsersController', ['$scope', '$http', '$location', '$routeParams', 'cartService', function($scope, $http, $location, $routeParams, cartService){
 
-
+	//put user in localstorage:
+	// try{
+	// 	$scope.user = JSON.parse(localStorage.user);
+	// 	console.log('user');
+	// 	console.log($scope.user);
+	// }
+	// catch(err){
+	// 	$scope.user = {};
+	// }
 
 	$scope.getUsers = function(){
 		$http.get('/api/users')
@@ -20,12 +28,27 @@ myApp.controller('UsersController', ['$scope', '$http', '$location', '$routePara
 		});
 	}
 
+	$scope.login = function(){
+		//r@r.com
+		$http.post('/api/auth/authenticate/', $scope.user)
+			.then(function(response){
+				console.log(response);
+					//window.location.href='#/users/add';
+			});
+	}
 	$scope.addUser = function(){
-		
-		$http.post('/api/users/', $scope.user)
-		.success(function(response){
-				window.location.href='#/users/add';
-		});
+		console.log($scope.user);
+		if($scope.user.password == $scope.repassword){
+			$http.post('/api/auth/register/', $scope.user)
+			.then(function(response){
+				console.log(response);
+					$location.path('/');
+			});
+
+		}
+		else{
+
+		}
 	}
 
 	$scope.updateUser = function(){

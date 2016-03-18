@@ -31,7 +31,7 @@
   <div class="panel-body">
        <div class="form-group">
               <label>Search:</label>
-              <input type="text" class="form-control" placeholder="enter searchterm" ng-model="users.search">
+              <input type="text" class="form-control" placeholder="enter searchterm" ng-model="searchorder">
             </div>
   </div>
   </div>
@@ -40,7 +40,7 @@
 
 
 <section class="trips" ng-init="getOrders()">
-<div class="panel panel-default" ng-repeat="order in orders">
+<div class="panel panel-default" ng-repeat="order in orders | filter: searchorder">
   <div class="panel-heading" >
   </div>
   <div class="panel-body" >

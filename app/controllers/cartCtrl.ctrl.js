@@ -1,10 +1,5 @@
 myApp.controller('CartController', CartController);
 
-	
-
-	
-
-	
 
 
 function CartController(cartService, $http, $location){
@@ -13,13 +8,36 @@ function CartController(cartService, $http, $location){
 	cartVm.removeItem = removeItem;
 	cartVm.addOrder = addOrder;
 
+	// if(localStorage.authToken){
+	// 	cartVm.firstname = "l";
+	// }
+
 	console.log(cartService.cartitems);
 	cartVm.total = 0;
 	Total();
 	cartVm.subtotal = cartVm.total * 0.81
 	cartVm.taxes = cartVm.total * 0.19
-	cartService.cartitems.from
+	cartService.cartitems.from;
 	
+	cartVm.firstname;
+	cartVm.lastname;
+	cartVm.email;
+	cartVm.phone;
+	cartVm.country;
+
+	try{
+		cartVm.user = JSON.parse(localStorage.user);
+		
+		cartVm.firstname = cartVm.user.firstname;
+		cartVm.lastname = cartVm.user.lastname;
+		cartVm.email = cartVm.user.email;
+		cartVm.phone = cartVm.user.phone;
+		
+
+	}
+	catch(err){
+		cartVm.user = {};
+	}
 
 
 

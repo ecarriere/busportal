@@ -31,7 +31,7 @@
   <div class="panel-body">
        <div class="form-group">
               <label>Search:</label>
-              <input type="text" class="form-control" placeholder="enter searchterm" ng-model="users.search">
+              <input type="text" class="form-control" placeholder="enter searchterm" ng-model="searchusers">
             </div>
   </div>
   </div>
@@ -40,7 +40,7 @@
 <!-- Show entries-->
 
 <section class="trips" ng-init="getUsers()">
-<div class="panel panel-default" ng-repeat="user in users">
+<div class="panel panel-default" ng-repeat="user in users | filter: searchusers ">
   <div class="panel-heading" >
   </div>
   <div class="panel-body" >
@@ -56,7 +56,7 @@
 
           </br>
           
-          <a href="#/users/edit/{{user._id}}">Edit</a> 
+          <a href="#/admin/users/edit/{{user._id}}">Edit</a> 
           <a class="btn btn-delete" ng-click="removeUser(user._id)">Delete</a>
 
           <hr>

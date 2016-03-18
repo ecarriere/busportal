@@ -32,7 +32,7 @@
 <div class="panel-body">
        <div class="form-group">
               <label>Search:</label>
-              <input type="text" class="form-control" placeholder="enter searchterm" ng-model="users.search">
+              <input type="text" class="form-control" placeholder="enter searchterm" ng-model="searchtrips">
             </div>
   </div>
   </div>
@@ -40,7 +40,7 @@
 
 
 <section class="trips" ng-init="getTrips()">
-<div class="panel panel-default" ng-repeat="trip in trips" >
+<div class="panel panel-default" ng-repeat="trip in trips | filter: searchtrips " >
   <div class="panel-heading" >
   </div>
   <div class="panel-body" >

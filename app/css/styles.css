@@ -1,6 +1,12 @@
 /*.panel-heading {
   background-color: blue;
 }*/
+
+
+#booking {
+  margin-top: 15px;
+}
+
 .cart-wrapper{
   background-color: #F0F0F0 
 }
@@ -12,7 +18,8 @@
 
 .menu-item, .navbar-brand {
   border: 1px solid white;
-  
+  background: rgba(32,32,32,0.7);
+
 }
 
 .menu-item > a {
@@ -30,12 +37,14 @@
   margin-left: auto;
   margin-right: auto;
   background-color: #F0F0F0 
+  border-radius: 25px;
   
 }
 
 .trips {
-  opacity: 0.85;
+  opacity: 0.9;
   z-index: 1000;
+
 }
 
 .seatsoption {
@@ -59,11 +68,11 @@
 	border: 2px solid #414141;
 	border-radius: 5px;
 	padding: 10px;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 #searchbutton{
-  margin-top: 25px;
+  margin-top: 32px;
   margin-left: 50px;
 }
 
@@ -98,7 +107,9 @@
 
 body {
   background: white;
-  font-family: 'Open Sans', sans-serif;
+  font-family: Optima;
+  font-variant: small-caps;
+  font-size: 20px;
 }
 
 .login {
@@ -342,7 +353,7 @@ body {
 }
 #auth .login-page h3{
   font-size:2rem;
-  color:#555;
+  color:white;
 }
 
 

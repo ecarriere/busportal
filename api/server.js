@@ -41,8 +41,8 @@ var orderRoutes = require('./routes/orderRoute.js')
 app.use('/api/orders', orderRoutes)
 
 // AuthRoute
-//var authRoutes = require('./routes/authRoute.js');
-//app.use('/api/auth', authRoutes);
+var authRoutes = require('./routes/authRoute.js');
+app.use('/api/auth', authRoutes);
 
 
 // Listen on port..

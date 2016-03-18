@@ -99,7 +99,9 @@
 <section class="trips">
 <div class="panel panel-default" ng-repeat="trip in cur_trips | orderBy:orderByDate| filter:{from: origin, to:destination, date:newdate}" >
   <div class="panel-heading" >
+  <a href="#/checkout" class="btn btn-primary pull-right" id="booking" ng-click="booking(trip, ctrl.seatselect)">Book</a>
   <h3><strong>{{trip.from}} - {{trip.to}}</strong></h3>
+
   </div>
   <div class="panel-body" >
          	<div class="row">
@@ -112,9 +114,11 @@
               <div class="col-md-3 pull-left">
               <p><strong>Date:       </strong>{{trip.date | date:'longDate'}}</p>
               <p><strong>Time:       </strong>{{trip.time}}</p>
-                <p><strong>Price:      </strong>{{trip.price | currency}}</p>
-
+              <p><strong>Price:      </strong>{{trip.price | currency}}</p>
+              
           </div>
+              
+
               <div class"row">
       			   <div class="col-md-3">
       					<p><strong>Seats left: </strong> {{trip.seats}}</p>
@@ -126,13 +130,14 @@
                                 <select class="btn btn-default dropdown-toggle" class="form-control" ng-model="ctrl.seatselect" >
                                     <option  ng-repeat="i in trip.seats | seatsFilter" >{{i}}</option>
                                     </select>
-                                    <a href="#/checkout" class="btn btn-primary pull-right" ng-click="booking(trip, ctrl.seatselect)">Book</a>
+                                    
       					           
               </div>
-             
-              </div>
+                  
               </div>
 
+              </div>
+                    
 
       					</div>
       					</div>

@@ -3,11 +3,11 @@
 
 	angular
 		.module('myApp')
-		.controller('AuthCtrl',AuthCtrl);
+		.controller('AuthController',AuthController);
 
-	AuthCtrl.$inject = ['$http'];
+	AuthController.$inject = ['$http'];
 
-	function AuthCtrl($http){
+	function AuthController($http){
 		var authVm = this;
 
 		//buttons
@@ -15,27 +15,27 @@
 		authVm.auth_btn = "Log In";
 
 		//Functions
-		authVm.register = register;
+		//authVm.register = register;
 		authVm.authenticate = authenticate;
 
-		function register(){
-			//check passwords
-			if(authVm.password == authVm.repassword){
-				var user = {
-					email:authVm.email,
-					password:authVm.password
-				}
-				user = JSON.stringify(user);
-				$http.post('/api/auth/register',user)
-				.then(function(res){
-					console.log(res);
-					authVm.register_btn = res.data.msg;
-				})
-			}
-			else{
-				authVm.register_btn = "Passwords Don't Match";
-			}
-		}
+		// function register(){
+		// 	//check passwords
+		// 	if(authVm.password == authVm.repassword){
+		// 		var user = {
+		// 			email:authVm.email,
+		// 			password:authVm.password
+		// 		}
+		// 		user = JSON.stringify(user);
+		// 		$http.post('/api/auth/register',user)
+		// 		.then(function(res){
+		// 			console.log(res);
+		// 			authVm.register_btn = res.data.msg;
+		// 		})
+		// 	}
+		// 	else{
+		// 		authVm.register_btn = "Passwords Don't Match";
+		// 	}
+		// }
 
 		function authenticate(){
 			var user = {
@@ -47,9 +47,10 @@
 			$http.post('/api/auth/authenticate',user)
 			.then(function(res){
 				console.log(res);
-				localStorage.loginEmail = authVm.email;
+				localStorage.user = JSON.stringify(res.data.user);
 				authVm.auth_btn = res.data.msg;
 			})
 		}
+		
 	}
 })();
